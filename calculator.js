@@ -30,21 +30,17 @@ function multiply (arr) {
 	}
 }
 
-
+//LEFT OFF HERE
 function power(a, b) {
-	let total = 1;
-	for (i = 0; i < b; i++) {
-		total * a;
-	}
-	return total;
+	return Math.pow(a, b);
 }
 
 function factorial(a) {
-	let total = 0;
-	for (i = a; i > 0; i--) {
-		total += a;
+	if (a == 0 || a == 1) {
+		return 1;
+	} else {
+		return (a * factorial(a - 1));
 	}
-	return total;
 }
 
 module.exports = {
