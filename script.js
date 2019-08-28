@@ -1,18 +1,38 @@
-let results = document.querySelector('#results');
-let ac = document.querySelector('#ac');
-let divide = document.querySelector('#divide');
-let seven = document.querySelector('#seven');
-let eight = document.querySelector('#eight');
-let nine = document.querySelector('#nine');
-let multiply= document.querySelector('#multiply');
-let four = document.querySelector('#four');
-let five = document.querySelector('#five');
-let six = document.querySelector('#six');
-let minus = document.querySelector('#minus');
-let one = document.querySelector('#one');
-let two = document.querySelector('#two');
-let three = document.querySelector('#three');
-let plus = document.querySelector('#plus');
-let zero = document.querySelector('#zero');
-let decimal = document.querySelector('#decimal');
-let equals = document.querySelector('#equals');
+const results = document.querySelector('#results');
+const ac = document.querySelector('#ac');
+const divide = document.querySelector('#divide');
+const seven = document.querySelector('#seven');
+const eight = document.querySelector('#eight');
+const nine = document.querySelector('#nine');
+const multiply= document.querySelector('#multiply');
+const four = document.querySelector('#four');
+const five = document.querySelector('#five');
+const six = document.querySelector('#six');
+const minus = document.querySelector('#minus');
+const one = document.querySelector('#one');
+const two = document.querySelector('#two');
+const three = document.querySelector('#three');
+const plus = document.querySelector('#plus');
+const zero = document.querySelector('#zero');
+const decimal = document.querySelector('#decimal');
+const equals = document.querySelector('#equals');
+
+function addBtn(a, b) {
+
+}
+
+function subtractBtn(a, b) {
+
+}
+
+function divideBtn(a, b) {
+
+}
+
+function multipltyBtn(a, b) {
+
+}
+
+function equalsBtn(a, b) {
+
+}
