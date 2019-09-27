@@ -31,7 +31,7 @@ let buttons = document.querySelectorAll('.buttons');
 
 buttons.forEach(function(e) {
     e.addEventListener('click', function() {
-        console.log(e.target);
+        ???????
     })
 })
 
