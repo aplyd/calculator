@@ -1,38 +1,42 @@
-const results = document.querySelector('#results');
-const ac = document.querySelector('#ac');
-const divide = document.querySelector('#divide');
-const seven = document.querySelector('#seven');
-const eight = document.querySelector('#eight');
-const nine = document.querySelector('#nine');
-const multiply= document.querySelector('#multiply');
-const four = document.querySelector('#four');
-const five = document.querySelector('#five');
-const six = document.querySelector('#six');
-const minus = document.querySelector('#minus');
-const one = document.querySelector('#one');
-const two = document.querySelector('#two');
-const three = document.querySelector('#three');
-const plus = document.querySelector('#plus');
-const zero = document.querySelector('#zero');
-const decimal = document.querySelector('#decimal');
-const equals = document.querySelector('#equals');
+let ac = document.querySelector('#ac');
+// let divideBtn = document.querySelector('#divide');
+// let seven = document.querySelector('#seven');
+// let eight = document.querySelector('#eight');
+// let nine = document.querySelector('#nine');
+// let multiplyBtn= document.querySelector('#multiply');
+// let four = document.querySelector('#four');
+// let five = document.querySelector('#five');
+// let six = document.querySelector('#six');
+// let minusBtn = document.querySelector('#minus');
+// let one = document.querySelector('#one');
+// let two = document.querySelector('#two');
+// let three = document.querySelector('#three');
+// let plusBtn = document.querySelector('#plus');
+// let zero = document.querySelector('#zero');
+// let decimal = document.querySelector('#decimal');
+// let equalsBtn = document.querySelector('#equals');
 
-function addBtn(a, b) {
+let displayValue = 0;
 
-}
+let results = document.querySelector('#results');
 
-function subtractBtn(a, b) {
+let buttons = document.getElementsByClassName("click");
 
-}
+let add = (a, b) => a + b;
+let subtract = (a, b) => a - b;
+let divide = (a, b) => a / b;
+let multiply = (a, b) => a * b;
 
-function divideBtn(a, b) {
-
-}
-
-function multipltyBtn(a, b) {
-
-}
-
-function equalsBtn(a, b) {
-
+function operate(operator, a, b) {
+    if (operator === '+') {
+        return add(a, b);
+    } else if (operator === '-') {
+        return subtract(a, b);
+    } else if (operator === '/') {
+        return divide(a, b);
+    } else if (operator === '*') {
+        return multiply(a, b);
+    } else {
+        console.log('error in operate function');
+    }
 }
