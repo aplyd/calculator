@@ -1,3 +1,4 @@
+let display = document.querySelector('#display');
 let ac = document.querySelector('#ac');
 // let divideBtn = document.querySelector('#divide');
 // let seven = document.querySelector('#seven');
@@ -16,11 +17,27 @@ let ac = document.querySelector('#ac');
 // let decimal = document.querySelector('#decimal');
 // let equalsBtn = document.querySelector('#equals');
 
-let displayValue = 0;
+//reset display
+let resetDisplayValue = 0;
 
-let results = document.querySelector('#results');
+let clear = () => display.textContent = resetDisplayValue;
 
-let buttons = document.getElementsByClassName("click");
+ac.addEventListener('click', function() {
+    clear();
+});
+
+//retrieve data from selected button
+let buttons = document.querySelectorAll('.buttons');
+
+buttons.forEach(function(e) {
+    e.addEventListener('click', function() {
+        console.log(e.target);
+    })
+})
+
+// buttons.addEventListener('click', function(e) {
+//     console.log(e.target);
+// })
 
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
