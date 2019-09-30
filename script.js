@@ -1,28 +1,13 @@
 let display = document.querySelector('#display');
 let ac = document.querySelector('#ac');
-// let divideBtn = document.querySelector('#divide');
-// let seven = document.querySelector('#seven');
-// let eight = document.querySelector('#eight');
-// let nine = document.querySelector('#nine');
-// let multiplyBtn= document.querySelector('#multiply');
-// let four = document.querySelector('#four');
-// let five = document.querySelector('#five');
-// let six = document.querySelector('#six');
-// let minusBtn = document.querySelector('#minus');
-// let one = document.querySelector('#one');
-// let two = document.querySelector('#two');
-// let three = document.querySelector('#three');
-// let plusBtn = document.querySelector('#plus');
-// let zero = document.querySelector('#zero');
-// let decimal = document.querySelector('#decimal');
-// let equalsBtn = document.querySelector('#equals');
-
 let displayValue = [];
+
 
 //reset display
 function clear() {
     displayValue = [];
     display.textContent = 0;
+    operateArray = [];
 }
 
 ac.addEventListener('click', function() {
@@ -30,7 +15,7 @@ ac.addEventListener('click', function() {
 });
 
 
-//retrieve data from selected button and update display
+//retrieve data from selected number button and update display
 let numButtons = document.querySelectorAll('.numButtons');
 
 numButtons.forEach(function(e) {
@@ -40,7 +25,30 @@ numButtons.forEach(function(e) {
     })
 })
 
-//math formulas and operator 
+
+//uh make calculator do math hopefully
+let operateArray = [];
+let mathButtons = document.querySelectorAll('.mathButtons');
+
+mathButtons.forEach(function(e) {
+    e.addEventListener('click', function(event) {
+        operateArray[0] = displayValue.join('');
+        displayValue = [];
+        display.textContent = '';
+        
+        operateArray[1] = event.target.value;
+        console.log(operateArray);
+    })
+})
+
+equalsButton = document.querySelector('#equalsButton');
+
+equalsButton.addEventListener('click', function(event) {
+    operateArray[2] = displayValue.join('');
+    operate(operateArray[1], operateArray[0], operateArray[2]);
+})
+
+//math formulas and operator function
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let divide = (a, b) => a / b;
@@ -48,13 +56,13 @@ let multiply = (a, b) => a * b;
 
 function operate(operator, a, b) {
     if (operator === '+') {
-        return add(a, b);
+        console.log(add(a, b));
     } else if (operator === '-') {
-        return subtract(a, b);
+        console.log(subtract(a, b));
     } else if (operator === '/') {
-        return divide(a, b);
+        console.log(divide(a, b));
     } else if (operator === '*') {
-        return multiply(a, b);
+        console.log(multiply(a, b));
     } else {
         console.log('error in operate function');
     }
