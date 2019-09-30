@@ -69,19 +69,23 @@ let multiply = (a, b) => a * b;
 
 function operate(operator, a, b) {
     if (operator === '+') {
-        display.textContent = (add(a, b));
+        display.textContent = add(a, b);
+
     } else if (operator === '-') {
-        display.textContent = (subtract(a, b));
+        display.textContent = subtract(a, b);
+
     } else if (operator === '/') {
-        display.textContent = (divide(a, b));
+        display.textContent = divide(a, b);
+
     } else if (operator === '*') {
-        display.textContent = (multiply(a, b));
+        display.textContent = multiply(a, b);
+
     } else {
         console.log('error in operate function');
     }
 }
 
-
+//reset styling
 function resetMathButtonStyling() {
     mathButtons.forEach(function(el) {
         el.style.backgroundColor = 'white';
