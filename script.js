@@ -26,19 +26,19 @@ ac.addEventListener('click', function() {
     clear();
 });
 
+let displayValue = [];
+
 //retrieve data from selected button
 let buttons = document.querySelectorAll('.buttons');
 
 buttons.forEach(function(e) {
-    e.addEventListener('click', function() {
-        ???????
+    e.addEventListener('click', function(event) {
+        displayValue.push(event.target.value);
+        console.log(displayValue);
     })
 })
 
-// buttons.addEventListener('click', function(e) {
-//     console.log(e.target);
-// })
-
+//math formulas and operator 
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let divide = (a, b) => a / b;
