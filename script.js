@@ -17,24 +17,26 @@ let ac = document.querySelector('#ac');
 // let decimal = document.querySelector('#decimal');
 // let equalsBtn = document.querySelector('#equals');
 
-//reset display
-let resetDisplayValue = 0;
+let displayValue = [];
 
-let clear = () => display.textContent = resetDisplayValue;
+//reset display
+function clear() {
+    displayValue = [];
+    display.textContent = 0;
+}
 
 ac.addEventListener('click', function() {
     clear();
 });
 
-let displayValue = [];
 
-//retrieve data from selected button
-let buttons = document.querySelectorAll('.buttons');
+//retrieve data from selected button and update display
+let numButtons = document.querySelectorAll('.numButtons');
 
-buttons.forEach(function(e) {
+numButtons.forEach(function(e) {
     e.addEventListener('click', function(event) {
         displayValue.push(event.target.value);
-        console.log(displayValue);
+        display.textContent = displayValue.join('');
     })
 })
 
