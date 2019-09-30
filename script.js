@@ -2,6 +2,7 @@ let display = document.querySelector('#display');
 let ac = document.querySelector('#ac');
 let displayValue = [];
 
+display.textContent = 0;
 
 //reset display
 function clear() {
@@ -12,6 +13,11 @@ function clear() {
 
 ac.addEventListener('click', function() {
     clear();
+
+    mathButtons.forEach(function(el) {
+        el.style.backgroundColor = 'white';
+        el.style.color = 'black';
+    })
 });
 
 
@@ -22,6 +28,8 @@ numButtons.forEach(function(e) {
     e.addEventListener('click', function(event) {
         displayValue.push(event.target.value);
         display.textContent = displayValue.join('');
+
+        resetMathButtonStyling();
     })
 })
 
@@ -35,9 +43,12 @@ mathButtons.forEach(function(e) {
         operateArray[0] = displayValue.join('');
         displayValue = [];
         display.textContent = '';
+
+        resetMathButtonStyling();
         
         operateArray[1] = event.target.value;
-        console.log(operateArray);
+        event.target.style.backgroundColor = "black";
+        event.target.style.color = "white";
     })
 })
 
@@ -46,24 +57,34 @@ equalsButton = document.querySelector('#equalsButton');
 equalsButton.addEventListener('click', function(event) {
     operateArray[2] = displayValue.join('');
     operate(operateArray[1], operateArray[0], operateArray[2]);
+
+    resetMathButtonStyling();
 })
 
 //math formulas and operator function
-let add = (a, b) => a + b;
+let add = (a, b) => Number(a) + Number(b);
 let subtract = (a, b) => a - b;
 let divide = (a, b) => a / b;
 let multiply = (a, b) => a * b;
 
 function operate(operator, a, b) {
     if (operator === '+') {
-        console.log(add(a, b));
+        display.textContent = (add(a, b));
     } else if (operator === '-') {
-        console.log(subtract(a, b));
+        display.textContent = (subtract(a, b));
     } else if (operator === '/') {
-        console.log(divide(a, b));
+        display.textContent = (divide(a, b));
     } else if (operator === '*') {
-        console.log(multiply(a, b));
+        display.textContent = (multiply(a, b));
     } else {
         console.log('error in operate function');
     }
+}
+
+
+function resetMathButtonStyling() {
+    mathButtons.forEach(function(el) {
+        el.style.backgroundColor = 'white';
+        el.style.color = 'black';
+    })
 }
