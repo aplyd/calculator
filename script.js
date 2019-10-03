@@ -1,6 +1,7 @@
 let display = document.querySelector('#display');
 let ac = document.querySelector('#ac');
 let displayValue = [];
+let operateArray = [];
 
 display.textContent = 0;
 
@@ -26,62 +27,98 @@ let numButtons = document.querySelectorAll('.numButtons');
 
 numButtons.forEach(function(e) {
     e.addEventListener('click', function(event) {
-        displayValue.push(event.target.value);
-        display.textContent = displayValue.join('');
 
+        //update display
+        displayValue.push(event.target.value);
+        console.log(displayValue);
+
+        
+        display.textContent = displayValue.join('');
+        
+        
+        //update calculation
+        if (operateArray.length > 1) {
+            operateArray[2] = displayValue.join('');
+        } else {
+            operateArray[0] = displayValue.join('');
+        }
+        
+        console.log(operateArray);
         resetMathButtonStyling();
     })
 })
 
 
 //uh make calculator do math hopefully
-let operateArray = [];
 let mathButtons = document.querySelectorAll('.mathButtons');
 
 mathButtons.forEach(function(e) {
     e.addEventListener('click', function(event) {
-        operateArray[0] = displayValue.join('');
-        displayValue = [];
-        display.textContent = '';
-
-        resetMathButtonStyling();
         
+        //reset display
+        displayValue = [];
+        display.textContent = displayValue;
+
+        
+        //update calculation
+        if (operateArray.length == 3) {
+            operateArray[0] = operate(operateArray[0], operateArray[1], operateArray[2]);
+        }
+
         operateArray[1] = event.target.value;
+
+        console.log(operateArray);
+        //update styling
+        resetMathButtonStyling();
         event.target.style.backgroundColor = "black";
         event.target.style.color = "white";
+        
     })
 })
+
 
 equalsButton = document.querySelector('#equalsButton');
 
 equalsButton.addEventListener('click', function(event) {
     operateArray[2] = displayValue.join('');
-    operate(operateArray[1], operateArray[0], operateArray[2]);
+    let answer = operate(operateArray[0], operateArray[1], operateArray[2]);
 
+    //round to second decimal place
+    let answerRounded = Math.round(answer * 100) / 100;
+    display.textContent = answerRounded;
+    
+    console.log(operateArray);
     resetMathButtonStyling();
 })
+
 
 //math formulas and operator function
 let add = (a, b) => Number(a) + Number(b);
 let subtract = (a, b) => a - b;
-let divide = (a, b) => a / b;
+let divide = (a, b) => {
+    if (a === '0' && b === '0') {
+        return 'nice try';
+    } else {
+        return a / b;
+    }
+}
 let multiply = (a, b) => a * b;
 
-function operate(operator, a, b) {
+function operate(a, operator, b) {
     if (operator === '+') {
-        display.textContent = add(a, b);
+        return add(a, b);
 
     } else if (operator === '-') {
-        display.textContent = subtract(a, b);
+        return subtract(a, b);
 
     } else if (operator === '/') {
-        display.textContent = divide(a, b);
+        return divide(a, b);
 
     } else if (operator === '*') {
-        display.textContent = multiply(a, b);
+        return multiply(a, b);
 
     } else {
-        console.log('error in operate function');
+        console.log('no calculation done');
     }
 }
 
