@@ -30,7 +30,16 @@ numButtons.forEach(function(e) {
 
         //update display
         displayValue.push(event.target.value);
-        display.textContent = displayValue.join('');
+        console.log(displayValue);
+
+        //round decimal points
+        if(displayValue.includes('.')) {
+            let index = displayValue.indexOf('.');
+            displayValue.slice(index, 3);
+            display.textContent = displayValue.join('');
+        } else {
+            display.textContent = displayValue.join('');
+        }
         
         //update calculation
         if (operateArray.length > 1) {
@@ -86,7 +95,13 @@ equalsButton.addEventListener('click', function(event) {
 //math formulas and operator function
 let add = (a, b) => Number(a) + Number(b);
 let subtract = (a, b) => a - b;
-let divide = (a, b) => a / b;
+let divide = (a, b) => {
+    if (a === '0' && b === '0') {
+        return 'nice try';
+    } else {
+        return a / b;
+    }
+}
 let multiply = (a, b) => a * b;
 
 function operate(a, operator, b) {
