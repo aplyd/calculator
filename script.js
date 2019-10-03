@@ -27,13 +27,20 @@ let numButtons = document.querySelectorAll('.numButtons');
 
 numButtons.forEach(function(e) {
     e.addEventListener('click', function(event) {
+
+        //update display
         displayValue.push(event.target.value);
         display.textContent = displayValue.join('');
+        
+        //update calculation
+        if (operateArray.length > 1) {
+            operateArray[2] = displayValue.join('');
+        } else {
+            operateArray[0] = displayValue.join('');
+        }
+        
+        console.log(operateArray);
         resetMathButtonStyling();
-
-        operateArray[0] = displayValue.join('');
-        //update operateArray[1] here instead of pulling value from display
-        console.log(operateArray); 
     })
 })
 
@@ -44,17 +51,27 @@ let mathButtons = document.querySelectorAll('.mathButtons');
 mathButtons.forEach(function(e) {
     e.addEventListener('click', function(event) {
         
+        //reset display
         displayValue = [];
         display.textContent = displayValue;
 
-        resetMathButtonStyling();
         
+        //update calculation
+        if (operateArray.length == 3) {
+            operateArray[0] = operate(operateArray[0], operateArray[1], operateArray[2]);
+        }
+
         operateArray[1] = event.target.value;
+
+        console.log(operateArray);
+        //update styling
+        resetMathButtonStyling();
         event.target.style.backgroundColor = "black";
         event.target.style.color = "white";
-        console.log(operateArray);
+        
     })
 })
+
 
 equalsButton = document.querySelector('#equalsButton');
 
@@ -65,6 +82,7 @@ equalsButton.addEventListener('click', function(event) {
     resetMathButtonStyling();
 })
 
+
 //math formulas and operator function
 let add = (a, b) => Number(a) + Number(b);
 let subtract = (a, b) => a - b;
@@ -73,19 +91,19 @@ let multiply = (a, b) => a * b;
 
 function operate(a, operator, b) {
     if (operator === '+') {
-        display.textContent = add(a, b);
+        return add(a, b);
 
     } else if (operator === '-') {
-        display.textContent = subtract(a, b);
+        return subtract(a, b);
 
     } else if (operator === '/') {
-        display.textContent = divide(a, b);
+        return divide(a, b);
 
     } else if (operator === '*') {
-        display.textContent = multiply(a, b);
+        return multiply(a, b);
 
     } else {
-        console.log('error in operate function');
+        console.log('no calculation done');
     }
 }
 
