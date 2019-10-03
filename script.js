@@ -32,14 +32,9 @@ numButtons.forEach(function(e) {
         displayValue.push(event.target.value);
         console.log(displayValue);
 
-        //round decimal points
-        if(displayValue.includes('.')) {
-            let index = displayValue.indexOf('.');
-            displayValue.slice(index, 3);
-            display.textContent = displayValue.join('');
-        } else {
-            display.textContent = displayValue.join('');
-        }
+        
+        display.textContent = displayValue.join('');
+        
         
         //update calculation
         if (operateArray.length > 1) {
@@ -86,7 +81,12 @@ equalsButton = document.querySelector('#equalsButton');
 
 equalsButton.addEventListener('click', function(event) {
     operateArray[2] = displayValue.join('');
-    display.textContent = operate(operateArray[0], operateArray[1], operateArray[2]);
+    let answer = operate(operateArray[0], operateArray[1], operateArray[2]);
+
+    //round to second decimal place
+    let answerRounded = Math.round(answer * 100) / 100;
+    display.textContent = answerRounded;
+    
     console.log(operateArray);
     resetMathButtonStyling();
 })
